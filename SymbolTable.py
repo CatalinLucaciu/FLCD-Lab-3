@@ -4,13 +4,16 @@ class HashTable:
         self.table = [[] for _ in range(self.size)]
     
     def hash(self, key):
+        if isinstance(key, list):
+            key = tuple(key)
         return hash(key) % self.size
+
     
     def insert(self, key, value):
         index = self.hash(key)
         for item in self.table[index]:
             if item[0] == key:
-                item[1] = value  
+                item[1] = value
                 return
         self.table[index].append([key, value])
     
@@ -33,7 +36,12 @@ class HashTable:
         for kv in self.table[index]:
             if kv[0] == key:
                 return True
-        return False        
+        return False
+
+    def __iter__(self):
+        for bucket in self.table:
+            for kv in bucket:
+                yield kv
 
 class SymbolTable:
     def __init__(self):
@@ -49,4 +57,8 @@ class SymbolTable:
         self.identifiers.delete(key)
 
     def contains(self, key):
-        return self.identifiers.contains(key)    
+        return self.identifiers.contains(key)
+
+    def __iter__(self):
+        return iter(self.identifiers)
+

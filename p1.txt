@@ -1,0 +1,12 @@
+var n: Ganz = 10
+var sum: Ganz = 0
+
+funktion calculateSum(n: Ganz) -> Ganz {
+    var s: Ganz = 0
+    für i in 1 bis n {
+        s = s + i
+    }
+    zurück s
+}
+
+druck("Sum of first ", n, " numbers is: ", calculateSum(n))
