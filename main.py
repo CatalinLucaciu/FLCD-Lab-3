@@ -55,10 +55,9 @@ def scan_source_code(source_code_file, token_categories, st_identifiers, st_cons
                 return False
     return True
 
-# Main program execution
 if __name__ == "__main__":
-    token_file_path = 'Token.in'  # Update with the correct path
-    source_code_path = 'p1.txt'  # Update with the correct path
+    token_file_path = 'Token.in' 
+    source_code_path = 'p1.txt'
 
     # Initialize symbol tables and PIF output list
     st_identifiers = SymbolTable()
